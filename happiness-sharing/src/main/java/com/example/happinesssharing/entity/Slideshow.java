@@ -13,5 +13,5 @@ public class Slideshow {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String picture;
+    private byte[] picture;
 }

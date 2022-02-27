@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Data
-@JsonIgnoreProperties({"agrees","disagrees","comments"})
+@JsonIgnoreProperties({"agrees","disagrees","comments","reports","collections"})
 public class Share {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,8 +22,12 @@ public class Share {
     private List<Disagree> disagrees;
     @OneToMany(mappedBy = "share",cascade = {CascadeType.REMOVE})
     private List<Comment> comments;
-    private String title;
-    private String content;
+    @OneToMany(mappedBy = "share",cascade = {CascadeType.REMOVE})
+    private List<Report> reports;
+    @OneToMany(mappedBy = "share",cascade = {CascadeType.REMOVE})
+    private List<Collection> collections;
+    private String text;
+    private byte[] pictureOrVideo;
     private String category;
     @Column(columnDefinition = "timestamp default current_timestamp",insertable = false,updatable = false)
     private LocalDateTime time;
