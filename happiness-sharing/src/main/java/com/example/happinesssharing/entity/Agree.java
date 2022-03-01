@@ -3,7 +3,6 @@ package com.example.happinesssharing.entity;
 import lombok.Data;
 
 import javax.persistence.*;
-
 @Entity
 @Data
 public class Agree {

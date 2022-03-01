@@ -3,6 +3,7 @@ package com.example.happinesssharing.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -14,4 +15,6 @@ public class Collection {
     private Sharer collector;
     @ManyToOne
     private Share share;
+    @Column(columnDefinition = "timestamp default current_timestamp",insertable = false,updatable = false)
+    private LocalDateTime time;
 }

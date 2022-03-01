@@ -9,23 +9,22 @@ import java.util.List;
 
 @Entity
 @Data
-@JsonIgnoreProperties({"agrees","disagrees","comments","reports","collections"})
+@JsonIgnoreProperties({"agrees","comments","reports","collections"})
 public class Share {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToOne
     private Sharer sharer;
-    @OneToMany(mappedBy = "share",cascade = {CascadeType.REMOVE})
+    @OneToMany(mappedBy = "share",cascade = {CascadeType.ALL})
     private List<Agree> agrees;
-    @OneToMany(mappedBy = "share",cascade = {CascadeType.REMOVE})
-    private List<Disagree> disagrees;
-    @OneToMany(mappedBy = "share",cascade = {CascadeType.REMOVE})
+    @OneToMany(mappedBy = "share",cascade = {CascadeType.ALL})
     private List<Comment> comments;
-    @OneToMany(mappedBy = "share",cascade = {CascadeType.REMOVE})
+    @OneToMany(mappedBy = "share",cascade = {CascadeType.ALL})
     private List<Report> reports;
-    @OneToMany(mappedBy = "share",cascade = {CascadeType.REMOVE})
+    @OneToMany(mappedBy = "share",cascade = {CascadeType.ALL})
     private List<Collection> collections;
+    private String title;
     private String text;
     private byte[] pictureOrVideo;
     private String category;

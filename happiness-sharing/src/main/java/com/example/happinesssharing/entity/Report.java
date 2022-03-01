@@ -17,7 +17,7 @@ public class Report {
     @ManyToOne
     private Share share;
     @ManyToOne
-    private Sharer reporters;
+    private Sharer reporter;
     private String content;
     private State state;
     @Column(columnDefinition = "timestamp default current_timestamp",insertable = false,updatable = false)
