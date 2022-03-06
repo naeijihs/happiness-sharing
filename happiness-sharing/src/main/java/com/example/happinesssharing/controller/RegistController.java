@@ -22,10 +22,10 @@ public class RegisterController {
     public Map register(@RequestBody User register){
         User user=userService.getUserByUsername(register.getUsername());
         if(user!=null)
-            return Map.of("info","false");
+            return Map.of("info","用户名已存在");
         else{
             userService.addUser(register);
-            return Map.of("info","success");
+            return Map.of("info","注册成功");
         }
     }
 }
