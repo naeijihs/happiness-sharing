@@ -18,8 +18,6 @@ public class UserService {
     @Autowired
     private PasswordEncoder encoder;
     public User addUser(User user){
-        user.setPassword(encoder.encode(user.getPassword()));
-        user.setRole(User.Role.SHARER);
         return userRepository.save(user);
     }
     public User getUserByUsername(String username){

@@ -1,6 +1,7 @@
 package com.example.happinesssharing.controller;
 
 import com.example.happinesssharing.entity.User;
+import com.example.happinesssharing.service.SharerService;
 import com.example.happinesssharing.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -13,18 +14,20 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/")
-public class RegisterController {
+public class RegistController {
     @Autowired
     private UserService userService;
     @Autowired
+    private SharerService sharerService;
+    @Autowired
     private PasswordEncoder encoder;
-    @PostMapping("register")
-    public Map register(@RequestBody User register){
+    @PostMapping("regist")
+    public Map regist(@RequestBody User register){
         User user=userService.getUserByUsername(register.getUsername());
         if(user!=null)
             return Map.of("info","用户名已存在");
         else{
-            userService.addUser(register);
+            sharerService.addSharer(register);
             return Map.of("info","注册成功");
         }
     }

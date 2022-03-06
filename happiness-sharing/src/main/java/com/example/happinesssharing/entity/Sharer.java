@@ -20,15 +20,15 @@ public class Sharer {
     private List<Share> shares;
     @OneToMany(mappedBy = "sharer",cascade = {CascadeType.ALL})
     private List<Agree> agrees;
-    @OneToMany(mappedBy = "sharer",cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy = "commenter",cascade = {CascadeType.ALL})
     private List<Comment> comments;
-    @OneToMany(mappedBy = "sharer",cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy = "reporter",cascade = {CascadeType.ALL})
     private List<Report> reports;
-    @OneToMany(mappedBy = "sharer",cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy = "collector",cascade = {CascadeType.ALL})
     private List<Collection> collections;
-    @OneToMany(mappedBy = "sharer",cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy = "receiver",cascade = {CascadeType.ALL})
     private List<Message> receives;
-    @OneToMany(mappedBy = "sharer",cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy = "sender",cascade = {CascadeType.ALL})
     private List<Message> sends;
     private String name;
     private String sex;

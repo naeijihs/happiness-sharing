@@ -1,15 +1,18 @@
 package com.example.happinesssharing;
 
+import com.example.happinesssharing.repository.impl.BaseRepositoryImpl;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.encrypt.Encryptors;
 import org.springframework.security.crypto.encrypt.TextEncryptor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
+@EnableJpaRepositories(repositoryBaseClass = BaseRepositoryImpl.class)
 public class HappinessSharingApplication {
     @Value("R28K42ZEJ8LWRHU5")
     private String secretKey;

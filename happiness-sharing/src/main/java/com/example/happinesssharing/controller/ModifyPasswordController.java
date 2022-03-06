@@ -1,5 +1,6 @@
 package com.example.happinesssharing.controller;
 
+import com.example.happinesssharing.entity.User;
 import com.example.happinesssharing.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,8 +16,8 @@ public class ModifyPasswordController {
     @Autowired
     private UserService userService;
     @PostMapping("modifyPassword")
-    public Map modifyPassword(@RequestBody String password){
-        userService.modifyPassword(password);
-        return Map.of("info","success");
+    public Map modifyPassword(@RequestBody User user){
+        userService.modifyPassword(user.getPassword());
+        return Map.of("info","密码修改成功");
     }
 }

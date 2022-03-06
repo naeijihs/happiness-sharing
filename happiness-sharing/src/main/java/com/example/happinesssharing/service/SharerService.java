@@ -4,6 +4,7 @@ import com.example.happinesssharing.component.RequestComponent;
 import com.example.happinesssharing.entity.*;
 import com.example.happinesssharing.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,7 +28,16 @@ public class SharerService {
     private CollectionRepository collectionRepository;
     @Autowired
     private MessageRepository messageRepository;
+    @Autowired
+    private PasswordEncoder encoder;
 
+    public Sharer addSharer(User user){
+        Sharer sharer=new Sharer();
+        user.setRole(User.Role.SHARER);
+        user.setPassword(encoder.encode(user.getPassword()));
+        sharer.setUser(user);
+        return sharerRepository.save(sharer);
+    }
     public Sharer getOwnInfo(){
         return sharerRepository.findById(requestComponent.getUid()).orElse(null);
     }

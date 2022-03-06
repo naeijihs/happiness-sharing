@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Data
 public class User {
     public enum Role{
-        ADMIN,SHARER
+        SHARER,ADMIN
     }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
