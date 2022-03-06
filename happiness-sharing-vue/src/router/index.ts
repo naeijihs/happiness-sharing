@@ -2,22 +2,11 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
-    name: "allIndex",
-    redirect: "/sharer",
-    children: [
-      {
-        path: "/xx",
-        component: () => import("../views/LoginView.vue"),
-      },
-      {
-        path: "admin",
-        component: () => import("../views/AdminView.vue"),
-      },
-      {
-        path: "sharer",
-        component: () => import("../views/SharerView.vue"),
-      },
-    ],
+    component: () => import("../views/SharerIndexView.vue"),
+  },
+  {
+    path: "/sharer/personalCenter",
+    component: () => import("../views/PersonalCenterView.vue"),
   },
 ];
 

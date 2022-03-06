@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-link to="/sharer/">广场</router-link>
+    <router-link to="/">广场</router-link>
     <router-link to="/sharer/personalCenter">个人中心</router-link>
     <router-view></router-view>
     <modify-password-component />

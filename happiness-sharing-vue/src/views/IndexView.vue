@@ -3,7 +3,6 @@
     <login-view v-if="vrole == '' && srole == null" />
     <admin-view v-else-if="vrole == 'admin' || srole == 'admin'" />
     <sharer-view v-else-if="vrole == 'sharer' || srole == 'sharer'" />
-    <router-view name="'allIndex" />
   </div>
 </template>
 
