@@ -7,6 +7,16 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/sharer/personalCenter",
     component: () => import("../views/PersonalCenterView.vue"),
+    children: [
+      {
+        path: "",
+        component: () => import("../views/PersonalInfoView.vue"),
+      },
+      {
+        path: "share",
+        component: () => import("../views/PersonalShareView.vue"),
+      },
+    ],
   },
 ];
 

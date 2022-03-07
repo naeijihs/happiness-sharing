@@ -24,6 +24,8 @@ axios.interceptors.response.use(
         const status = data.status;
         if (status == 401)
             store.commit("openDialog", "您输入的用户名或密码有误");
+        else if (status == 403)
+            store.commit("openDialog", "无权限");
         return Promise.reject(err);
     }
 )

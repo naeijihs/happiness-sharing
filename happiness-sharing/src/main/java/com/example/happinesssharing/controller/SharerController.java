@@ -21,7 +21,7 @@ public class SharerController {
     }
     @PostMapping("info/modifyInfo")
     public Map modifyInfo(@RequestBody Sharer newSharer){
-        return Map.of("sharer",sharerService.modifySharer(newSharer));
+        return Map.of("sharer",sharerService.modifySharer(newSharer),"info","个人信息修改成功");
     }
     @PostMapping("share/add")
     public Map addShare(@RequestBody Share share){

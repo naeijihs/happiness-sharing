@@ -20,13 +20,13 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Autowired
     private LoginInterceptor loginInterceptor;
     public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(loginInterceptor)
+                .addPathPatterns("/**")
+                .excludePathPatterns("/login","/regist");
         registry.addInterceptor(adminInterceptor)
                 .addPathPatterns("/admin/**");
         registry.addInterceptor(sharerInterceptor)
                 .addPathPatterns("/sharer/**");
-        registry.addInterceptor(loginInterceptor)
-                .addPathPatterns("/**")
-                .excludePathPatterns("/login","/regist");
     }
     @Bean
     public CorsFilter corsFilter(){
