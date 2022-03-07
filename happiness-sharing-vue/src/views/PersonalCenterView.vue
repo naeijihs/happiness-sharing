@@ -3,6 +3,12 @@
     <div>
       <router-link to="/sharer/personalCenter">info</router-link>
       <router-link to="/sharer/personalCenter/share">share</router-link>
+      <router-link to="/sharer/personalCenter/comment">comment</router-link>
+      <router-link to="/sharer/personalCenter/collection"
+        >collection</router-link
+      >
+      <router-link to="/sharer/personalCenter/report">report</router-link>
+      <router-link to="/sharer/personalCenter/message">message</router-link>
     </div>
     <div><router-view /></div>
   </div>

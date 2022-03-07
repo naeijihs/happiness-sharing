@@ -18,7 +18,7 @@ public class Sharer {
     private User user;
     @OneToMany(mappedBy = "sharer",cascade = {CascadeType.ALL})
     private List<Share> shares;
-    @OneToMany(mappedBy = "sharer",cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy = "agreer",cascade = {CascadeType.ALL})
     private List<Agree> agrees;
     @OneToMany(mappedBy = "commenter",cascade = {CascadeType.ALL})
     private List<Comment> comments;

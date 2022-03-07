@@ -16,6 +16,26 @@ const routes: Array<RouteRecordRaw> = [
         path: "share",
         component: () => import("../views/PersonalShareView.vue"),
       },
+      {
+        path: "share/addShare",
+        component: () => import("../views/AddShareView.vue"),
+      },
+      {
+        path: "comment",
+        component: () => import("../views/PersonalCommentView.vue"),
+      },
+      {
+        path: "collection",
+        component: () => import("../views/PersonalCollectionView.vue"),
+      },
+      {
+        path: "report",
+        component: () => import("../views/PersonalReportView.vue"),
+      },
+      {
+        path: "message",
+        component: () => import("../views/PersonalMessageView.vue"),
+      },
     ],
   },
 ];

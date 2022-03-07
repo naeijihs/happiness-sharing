@@ -25,7 +25,7 @@ public class SharerController {
     }
     @PostMapping("share/add")
     public Map addShare(@RequestBody Share share){
-        return Map.of("share",shareService.addShare(share));
+        return Map.of("share",shareService.addShare(share),"info","分享成功");
     }
     @GetMapping("share/delete/{shareId}")
     public void deleteShare(@PathVariable int shareId){
@@ -45,7 +45,7 @@ public class SharerController {
     }
     @PostMapping("share/comment/add")
     public Map addComment(@RequestBody Comment comment){
-        return Map.of("comment",shareService.addComment(comment));
+        return Map.of("comment",shareService.addComment(comment),"info","评论发布成功");
     }
     @GetMapping("share/comment/getOwnSendComments")
     public Map getOwnSendComments(){
@@ -57,7 +57,7 @@ public class SharerController {
     }
     @PostMapping("share/report/send")
     public Map addReport(@RequestBody Report report){
-        return Map.of("report",shareService.addReport(report));
+        return Map.of("report",shareService.addReport(report),"info","举报已提交");
     }
     @GetMapping("report/getSendReports")
     public Map getSendReports(){
@@ -65,7 +65,7 @@ public class SharerController {
     }
     @GetMapping("collection/addCollection/{shareId}")
     public Map addCollection(@PathVariable int shareId){
-        return Map.of("collection",sharerService.addCollection(shareId));
+        return Map.of("info",sharerService.addCollection(shareId));
     }
     @GetMapping("collection/cancelCollection/{shareId}")
     public void cancelCollection(@PathVariable int shareId){
@@ -77,15 +77,11 @@ public class SharerController {
     }
     @PostMapping("message/send")
     public Map sendMessage(@RequestBody Message message){
-        return Map.of("message",sharerService.sendMessage(message));
+        return Map.of("message",sharerService.sendMessage(message),"info","留言成功");
     }
-    @GetMapping("message/getSend")
-    public Map getSendMessages(){
-        return Map.of("sendMessages",sharerService.getSendMessages());
-    }
-    @GetMapping("message/getReceive")
-    public Map getReceiveMessages(){
-        return Map.of("receiveMessages",sharerService.getReceiveMessages());
+    @GetMapping("message/getMessages")
+    public Map getMessages(){
+        return Map.of("sendMessages",sharerService.getSendMessages(),"receiveMessages",sharerService.getReceiveMessages());
     }
     @GetMapping("message/delete/{messageId}")
     public void deleteMessage(@PathVariable int messageId){

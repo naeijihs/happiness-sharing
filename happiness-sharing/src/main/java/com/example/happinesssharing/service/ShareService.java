@@ -34,24 +34,26 @@ public class ShareService {
         shareRepository.deleteById(id);
     }
     public List<Share> getOwnShares(){
-        Sharer sharer=sharerRepository.findById(requestComponent.getUid()).orElse(null);
-        return shareRepository.getOwnShares(sharer);
+        return sharerRepository.findById(requestComponent.getUid()).orElse(null).getShares();
     }
     public List<Share> getAllShares(){
         return shareRepository.findAll();
     }
     public String agree(int id){
         Share share=shareRepository.findById(id).orElse(null);
-        Sharer sharer=sharerRepository.findById(requestComponent.getUid()).orElse(null);
-        List<Agree> a=share.getAgrees().stream().filter(agree -> agree.getSharer()==sharer).collect(Collectors.toList());
-        if(a!=null)
-            return "false";
+        Sharer agreer=sharerRepository.findById(requestComponent.getUid()).orElse(null);
+        List<Agree> a=share.getAgrees().stream().filter(agree -> agree.getAgreer()==agreer).collect(Collectors.toList());
+        if(a.size()!=0)
+            return "您已点过赞";
         else {
             Agree agree=new Agree();
             agree.setShare(share);
-            agree.setSharer(sharer);
+            agree.setAgreer(agreer);
             agreeRepository.save(agree);
-            return "success";
+            int n=share.getAgreeCount()+1;
+            share.setAgreeCount(n);
+            shareRepository.save(share);
+            return "点赞成功";
         }
     }
     public Comment addComment(Comment comment){

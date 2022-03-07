@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -57,35 +58,39 @@ public class SharerService {
         commentRepository.deleteById(id);
     }
     public List<Report> getSendReports(){
-        Sharer reporter=sharerRepository.findById(requestComponent.getUid()).orElse(null);
-        return reportRepository.findByReporter(reporter);
+        return sharerRepository.findById(requestComponent.getUid()).orElse(null).getReports();
     }
-    public Collection addCollection(int id){
+    public String addCollection(int id){
         Share share=shareRepository.findById(id).orElse(null);
         Sharer collector=sharerRepository.findById(requestComponent.getUid()).orElse(null);
-        Collection collection=new Collection();
-        collection.setCollector(collector);
-        collection.setShare(share);
-        return collectionRepository.save(collection);
+        List<Collection> c=collector.getCollections().stream().filter(collection -> collection.getShare()==share).collect(Collectors.toList());
+        if(c.size()==0){
+            Collection collection=new Collection();
+            collection.setCollector(collector);
+            collection.setShare(share);
+            collectionRepository.save(collection);
+            return "收藏成功";
+        }
+        else
+            return "您已收藏此分享";
+
     }
     public void cancelCollection(int id){
         collectionRepository.deleteById(id);
     }
     public List<Collection> getOwnCollections(){
-        Sharer collector=sharerRepository.findById(requestComponent.getUid()).orElse(null);
-        return collectionRepository.findByCollector(collector);
+        return sharerRepository.findById(requestComponent.getUid()).orElse(null).getCollections();
     }
     public Message sendMessage(Message message){
+        message.setReceiver(sharerRepository.findById(message.getReceiver().getId()).orElse(null));
         message.setSender(sharerRepository.findById(requestComponent.getUid()).orElse(null));
         return messageRepository.save(message);
     }
     public List<Message> getSendMessages(){
-        Sharer sender=sharerRepository.findById(requestComponent.getUid()).orElse(null);
-        return messageRepository.findBySender(sender);
+        return sharerRepository.findById(requestComponent.getUid()).orElse(null).getSends();
     }
     public List<Message> getReceiveMessages(){
-        Sharer receiver=sharerRepository.findById(requestComponent.getUid()).orElse(null);
-        return messageRepository.findByReceiver(receiver);
+        return sharerRepository.findById(requestComponent.getUid()).orElse(null).getReceives();
     }
     public void deleteMessage(int id){
         messageRepository.deleteById(id);

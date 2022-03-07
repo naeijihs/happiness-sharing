@@ -12,5 +12,5 @@ public class Agree {
     @ManyToOne
     private Share share;
     @ManyToOne
-    private Sharer sharer;
+    private Sharer agreer;
 }
