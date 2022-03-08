@@ -1,11 +1,84 @@
 <template>
   <div>
-    <div>classfication</div>
-    <div><input type="text" v-model="search" /></div>
+    <div>
+      按类筛选：
+      <label
+        ><input
+          type="radio"
+          v-model="category"
+          @change="match(search, category, sort)"
+          value="全部"
+        />全部</label
+      >
+      <label
+        ><input
+          type="radio"
+          v-model="category"
+          @change="match(search, category, sort)"
+          value="校园"
+        />校园</label
+      >
+      <label
+        ><input
+          type="radio"
+          v-model="category"
+          @change="match(search, category, sort)"
+          value="家庭"
+        />家庭</label
+      >
+      <label
+        ><input
+          type="radio"
+          v-model="category"
+          @change="match(search, category, sort)"
+          value="社会"
+        />社会</label
+      >
+    </div>
+    <div>
+      排序方式：
+      <label
+        ><input
+          type="radio"
+          v-model="sort"
+          @change="match(search, category, sort)"
+          value="0"
+        />最近发布</label
+      >
+      <label
+        ><input
+          type="radio"
+          v-model="sort"
+          @change="match(search, category, sort)"
+          value="1"
+        />早期发布</label
+      >
+      <label
+        ><input
+          type="radio"
+          v-model="sort"
+          @change="match(search, category, sort)"
+          value="2"
+        />点赞最多</label
+      >
+      <label
+        ><input
+          type="radio"
+          v-model="sort"
+          @change="match(search, category, sort)"
+          value="3"
+        />点赞最少</label
+      >
+    </div>
+    <div>
+      <input type="text" v-model="search" />
+    </div>
     <div v-for="(share, index) in publicShares" :key="index">
       {{ share.sharer.user.username }}
-      <button @click="needinfo(index)">info</button>
-      <div v-if="isneedinfo[index] == 1">
+      <button @click="needinfo(index)" v-if="isneedinfo[index] != 1">
+        info
+      </button>
+      <div v-else>
         {{ share.sharer.name }}
         {{ share.sharer.age }}
         {{ share.sharer.sex }}
@@ -17,8 +90,9 @@
         </button>
         <button @click="closeinfo(index)">closeinfo</button>
       </div>
-      {{ share.title }}
-      {{ share.time }}点赞数{{ share.agreeCount }}
+      timu:{{ share.title }}neirong:{{ share.text }} {{ share.time }}点赞数{{
+        share.agreeCount
+      }}
       <button @click="agree(share.id)">agree</button>
       <button @click="collect(share.id)">收藏</button>
       <div v-if="isneedreport[index] == 1">
@@ -43,7 +117,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, inject, ref } from "vue";
+import { computed, defineComponent, inject, ref, watch } from "vue";
 import { useStore } from "vuex";
 const useShareIndex = (store: any, refresh: any) => {
   const getAllShares = () => {
@@ -90,6 +164,10 @@ const useShareIndex = (store: any, refresh: any) => {
       refresh();
     }
   };
+  const match = (search: string, category: string, sort: any) => {
+    store.commit("match", { search, category, sort });
+  };
+
   return {
     getAllShares,
     agree,
@@ -97,11 +175,14 @@ const useShareIndex = (store: any, refresh: any) => {
     report,
     collect,
     sendMessage,
+    match,
   };
 };
 export default defineComponent({
   setup() {
     const search = ref("");
+    const category = ref("全部");
+    const sort = ref(0);
     const store = useStore();
     const comment = ref([]);
     const reportContent = ref([]);
@@ -122,8 +203,16 @@ export default defineComponent({
     const closeinfo = (index: any) => {
       isneedinfo.value[index] = null;
     };
-    const { getAllShares, addComment, agree, report, collect, sendMessage } =
-      useShareIndex(store, refresh);
+    const {
+      getAllShares,
+      addComment,
+      agree,
+      report,
+      collect,
+      sendMessage,
+      match,
+    } = useShareIndex(store, refresh);
+    watch(search, () => match(search.value, category.value, sort.value));
     getAllShares();
     return {
       search,
@@ -142,6 +231,9 @@ export default defineComponent({
       needinfo,
       closeinfo,
       sendMessage,
+      category,
+      sort,
+      match,
     };
   },
 });

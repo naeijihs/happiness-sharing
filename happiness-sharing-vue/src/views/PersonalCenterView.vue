@@ -10,7 +10,7 @@
       <router-link to="/sharer/personalCenter/report">report</router-link>
       <router-link to="/sharer/personalCenter/message">message</router-link>
     </div>
-    <div><router-view /></div>
+    <div><router-view name="person" /></div>
   </div>
 </template>
 

@@ -22,10 +22,15 @@ axios.interceptors.response.use(
         const json = JSON.stringify(err);
         const data = JSON.parse(json);
         const status = data.status;
-        if (status == 401)
-            store.commit("openDialog", "您输入的用户名或密码有误");
-        else if (status == 403)
+        if (status == 401) {
+            store.commit("openDialog", "您输入有误/您处于未登录状态无法访问");
+            store.commit("unlogin");
+        }
+        else if (status == 403) {
             store.commit("openDialog", "无权限");
+            store.commit("unlogin");
+        }
+
         return Promise.reject(err);
     }
 )

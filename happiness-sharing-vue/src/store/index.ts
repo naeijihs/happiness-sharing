@@ -1,5 +1,7 @@
 import axios from "../axios";
 import { createStore } from "vuex";
+import { Sunday } from "@/util/stringMatchUtil";
+import { jsQuickSort } from "@/util/quickSortUtil";
 const state = {
   role: "",
   dialogMessage: "",
@@ -12,6 +14,7 @@ const state = {
   personalReports: [],
   sendMessages: [],
   receiveMessages: [],
+  unsettledReports: [],
 };
 const actions = {
   login: async ({ commit }: any, { username, password }: any) => {
@@ -212,10 +215,38 @@ const actions = {
       if (error) throw error;
     }
   },
+  getUnsettledReports: async ({ commit }: any) => {
+    try {
+      const { data } = await axios.get("/admin/report/getAllUnsettledReports");
+      commit("getUnsettledReports", data);
+    } catch (error) {
+      if (error) throw error;
+    }
+  },
+  acceptReport: async ({ commit }: any, id: any) => {
+    try {
+      await axios.get("/admin/report/accept/" + id);
+      commit("openDialog", "举报已受理");
+    } catch (error) {
+      if (error) throw error;
+    }
+  },
+  refuseReport: async ({ commit }: any, id: any) => {
+    try {
+      await axios.get("/admin/report/refuse/" + id);
+      commit("openDialog", "举报已拒绝");
+    } catch (error) {
+      if (error) throw error;
+    }
+  },
 };
 const mutations = {
   login: (state: any, data: any) => {
     state.role = data.role;
+  },
+  unlogin: (state: any) => {
+    sessionStorage.clear();
+    state.role = "";
   },
   getPersonalInfo: (state: any, { sharer }: any) => {
     state.personalInfo = sharer;
@@ -242,6 +273,32 @@ const mutations = {
   getMessages: (state: any, data: any) => {
     state.sendMessages = data.sendMessages.reverse();
     state.receiveMessages = data.receiveMessages.reverse();
+  },
+  getUnsettledReports: (state: any, data: any) => {
+    state.unsettledReports = data.allUnsettledReports.reverse();
+  },
+  match: (state: any, { search, category, sort }: any) => {
+    if (category == "全部" && search == "")
+      //很奇怪，似乎state的值不能直接赋给state，会出bug
+      state.publicShares = state.allShares.filter(() => true);
+    else if (category != "全部" && search == "")
+      state.publicShares = state.allShares.filter(
+        (share: any) => share.category == category
+      );
+    else if (category == "全部" && search != "")
+      state.publicShares = state.allShares.filter((share: any) =>
+        Sunday((share.title + share.text).trim(), search.trim())
+      );
+    else
+      state.publicShares = state.allShares
+        .filter((share: any) =>
+          Sunday((share.title + share.text).trim(), search.trim())
+        )
+        .filter((share: any) => share.category == category);
+    if (sort == 1) state.publicShares.reverse();
+    else if (sort == 2)
+      state.publicShares = jsQuickSort(state.publicShares).reverse();
+    else if (sort == 3) state.publicShares = jsQuickSort(state.publicShares);
   },
   closeDialog: (state: any) => {
     state.dialogMessage = "";

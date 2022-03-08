@@ -2,41 +2,65 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
-    component: () => import("../views/SharerIndexView.vue"),
+    components: {
+      sharer: () => import("../views/SharerIndexView.vue"),
+    },
   },
   {
     path: "/sharer/personalCenter",
-    component: () => import("../views/PersonalCenterView.vue"),
+    components: {
+      sharer: () => import("../views/PersonalCenterView.vue"),
+    },
     children: [
       {
         path: "",
-        component: () => import("../views/PersonalInfoView.vue"),
+        components: {
+          person: () => import("../views/PersonalInfoView.vue"),
+        },
       },
       {
         path: "share",
-        component: () => import("../views/PersonalShareView.vue"),
+        components: {
+          person: () => import("../views/PersonalShareView.vue"),
+        },
       },
       {
         path: "share/addShare",
-        component: () => import("../views/AddShareView.vue"),
+        components: {
+          person: () => import("../views/AddShareView.vue"),
+        },
       },
       {
         path: "comment",
-        component: () => import("../views/PersonalCommentView.vue"),
+        components: {
+          person: () => import("../views/PersonalCommentView.vue"),
+        },
       },
       {
         path: "collection",
-        component: () => import("../views/PersonalCollectionView.vue"),
+        components: {
+          person: () => import("../views/PersonalCollectionView.vue"),
+        },
       },
       {
         path: "report",
-        component: () => import("../views/PersonalReportView.vue"),
+        components: {
+          person: () => import("../views/PersonalReportView.vue"),
+        },
       },
       {
         path: "message",
-        component: () => import("../views/PersonalMessageView.vue"),
+        components: {
+          person: () => import("../views/PersonalMessageView.vue"),
+        },
       },
     ],
+  },
+  {
+    path: "/admin/report",
+    components: {
+      admin: () => import("../views/AdminReportView.vue"),
+    },
   },
 ];
 
