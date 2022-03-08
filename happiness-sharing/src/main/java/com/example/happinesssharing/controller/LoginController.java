@@ -27,17 +27,17 @@ public class LoginController {
     @Autowired
     private UserService userService;
     @PostMapping("login")
-    public Map login(@RequestBody User login, HttpServletResponse response){
-        User user= Optional.ofNullable(userService.getUserByUsername(login.getUsername()))
-                .filter(u->encoder.matches(login.getPassword(),u.getPassword()))
-                .orElseThrow(()->new ResponseStatusException(HttpStatus.UNAUTHORIZED,"您的用户名密码输入有误"));
-        MyToken token=new MyToken(user.getId(),user.getRole());
-        String auth=encrypt.encryptToken(token);
-        response.setHeader("Access-Control-Expose-Headers",MyToken.AUTHORIZATION);
-        response.setHeader(MyToken.AUTHORIZATION,auth);
-        if(user.getRole() == User.Role.ADMIN)
-            return Map.of("role","admin");
+    public Map login(@RequestBody User login, HttpServletResponse response) {
+        User user = Optional.ofNullable(userService.getUserByUsername(login.getUsername()))
+                .filter(u -> encoder.matches(login.getPassword(), u.getPassword()))
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "您的用户名密码输入有误"));
+        MyToken token = new MyToken(user.getId(), user.getRole());
+        String auth = encrypt.encryptToken(token);
+        response.setHeader("Access-Control-Expose-Headers", MyToken.AUTHORIZATION);
+        response.setHeader(MyToken.AUTHORIZATION, auth);
+        if (user.getRole() == User.Role.ADMIN)
+            return Map.of("role", "admin");
         else
-            return Map.of("role","sharer");
+            return Map.of("role", "sharer");
     }
 }
