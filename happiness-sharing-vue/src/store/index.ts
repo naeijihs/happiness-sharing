@@ -70,8 +70,11 @@ const actions = {
   },
   addShare: async ({ commit }: any, share: any) => {
     try {
-      const { data } = await axios.post("/sharer/share/add", share);
-      commit("openDialog", data.info);
+      const { data } = await axios.post(
+        "http://127.0.0.1:5000/add_share",
+        share
+      );
+      commit("openDialog", data);
     } catch (error) {
       if (error) throw error;
     }

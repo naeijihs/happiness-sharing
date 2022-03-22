@@ -15,24 +15,24 @@
           type="radio"
           v-model="category"
           @change="match(search, category, sort)"
-          value="校园"
-        />校园</label
+          value="school"
+        />school</label
       >
       <label
         ><input
           type="radio"
           v-model="category"
           @change="match(search, category, sort)"
-          value="家庭"
-        />家庭</label
+          value="home"
+        />home</label
       >
       <label
         ><input
           type="radio"
           v-model="category"
           @change="match(search, category, sort)"
-          value="社会"
-        />社会</label
+          value="company"
+        />company</label
       >
     </div>
     <div>
