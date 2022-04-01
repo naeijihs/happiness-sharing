@@ -1,15 +1,54 @@
 <template>
   <div>
-    <div v-for="(r, i) in unsettledReports" :key="i">
-      举报的分享标题：{{ r.share.title }} 举报的分享内容：{{
-        r.share.text
-      }}
-      举报时间{{ r.time }}举报内容{{ r.content }}举报人{{
-        r.reporter.user.username
-      }}
-      <button @click="acceptReport(r.id)">accept</button>
-      <button @click="refuseReport(r.id)">refuse</button>
-    </div>
+    <el-table :data="unsettledReports" style="width: 100%; font-size: 17px">
+      <el-table-column
+        fixed
+        prop="share.title"
+        label="分享标题"
+        width="150"
+        align="center"
+      />
+      <el-table-column
+        prop="share.text"
+        label="分享内容"
+        width="400"
+        align="center"
+      />
+      <el-table-column
+        prop="reporter.user.username"
+        label="举报者"
+        width="120"
+        align="center"
+      />
+      <el-table-column
+        prop="content"
+        label="举报陈述"
+        width="400"
+        align="center"
+      />
+      <el-table-column
+        prop="time"
+        label="举报时间"
+        width="200"
+        align="center"
+      />
+      <el-table-column fixed="right" label="处理" width="120" align="center">
+        <template #default="scope">
+          <el-button
+            type="text"
+            size="small"
+            @click="acceptReport(scope.row.id)"
+            >接受</el-button
+          >
+          <el-button
+            type="text"
+            size="small"
+            @click="refuseReport(scope.row.id)"
+            >拒绝</el-button
+          >
+        </template>
+      </el-table-column>
+    </el-table>
   </div>
 </template>
 

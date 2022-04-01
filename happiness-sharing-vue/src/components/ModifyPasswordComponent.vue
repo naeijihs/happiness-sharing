@@ -1,7 +1,7 @@
 <template>
   <div id="modify">
-    <div v-if="!isclick">
-      <a @click="click">密码修改</a>
+    <div v-if="!isclick" style="text-align: right">
+      <a @click="click" style="margin-right: 5px">密码修改</a>
     </div>
     <div v-else>
       <input
@@ -9,6 +9,7 @@
         v-model="newPassword"
         placeholder="请输入新密码"
         autofocus
+        style=""
       />
       <button @click="modifyPassword">修改</button>
       <button @click="modifyPasswordClose">关闭</button>
@@ -66,8 +67,8 @@ export default defineComponent({
   width: 230px;
   height: 25px;
   position: fixed;
-  bottom: 8px;
-  left: 28px;
+  right: 15px;
+  top: 10px;
   z-index: 15;
   border-radius: 10px;
 }

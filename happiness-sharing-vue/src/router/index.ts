@@ -62,6 +62,12 @@ const routes: Array<RouteRecordRaw> = [
       admin: () => import("../views/AdminReportView.vue"),
     },
   },
+  {
+    path: "/admin/slide",
+    components: {
+      admin: () => import("../views/AdminSlideView.vue"),
+    },
+  },
 ];
 
 const router = createRouter({

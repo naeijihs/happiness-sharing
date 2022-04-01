@@ -57,7 +57,7 @@ export default defineComponent({
 <style scoped>
 #login {
   width: 400px;
-  margin: 140px auto;
+  margin: 23vh auto;
   border: 1px solid gray;
   padding: 0 10px;
   border-radius: 6px;
@@ -85,7 +85,12 @@ button {
   color: gray;
   border-radius: 6px;
   background-color: white;
-  margin-left: 160px;
+}
+button:first-child {
+  margin-left: 100px;
+}
+button:nth-child(2) {
+  margin-left: 40px;
 }
 button:hover {
   background-color: rgb(79, 166, 236);

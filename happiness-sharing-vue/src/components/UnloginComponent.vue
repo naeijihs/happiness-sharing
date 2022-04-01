@@ -1,6 +1,6 @@
 <template>
   <div id="unlogin">
-    <button @click="unlogin">退出登录</button>
+    <a @click="unlogin">退出登录</a>
   </div>
 </template>
 
@@ -25,23 +25,17 @@ export default defineComponent({
 <style scoped>
 #unlogin {
   position: fixed;
-  top: 10px;
-  right: 10px;
+  top: 36px;
+  right: 20px;
   z-index: 15;
 }
-button {
-  border: 0.5px solid silver;
-  color: gray;
-  border-radius: 3px;
-  background-color: white;
+a {
+  display: block;
+  text-decoration: none;
   cursor: pointer;
+  color: rgb(136, 136, 136);
 }
-button:hover {
-  background-color: rgb(79, 166, 236);
-  border: 0.5px solid rgb(79, 166, 236);
-  color: white;
-}
-button:focus {
-  outline: none;
+a:hover {
+  color: black;
 }
 </style>

@@ -85,7 +85,7 @@
         {{ share.sharer.contact }}
         {{ share.sharer.province }}
         <input type="text" v-model="message[index]" />
-        <button @click="sendMessage(share.sharer.id, message[index])">
+        <button @click="sendMessage(share.sharer.id, message[index], index)">
           message
         </button>
         <button @click="closeinfo(index)">closeinfo</button>
@@ -97,13 +97,15 @@
       <button @click="collect(share.id)">收藏</button>
       <div v-if="isneedreport[index] == 1">
         <input type="text" v-model="reportContent[index]" />
-        <button @click="report(share.id, reportContent[index])">report</button>
+        <button @click="report(share.id, reportContent[index], index)">
+          report
+        </button>
         <button @click="closereport(index)">closereport</button>
       </div>
       <button @click="needreport(index)" v-else>openreport</button>
       <div>
         评论：<input type="text" v-model="comment[index]" /><button
-          @click="addComment(share.id, comment[index])"
+          @click="addComment(share.id, comment[index], index)"
         >
           submit
         </button>
@@ -117,101 +119,86 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, inject, ref, watch } from "vue";
+import { computed, defineComponent, ref, watch } from "vue";
 import { useStore } from "vuex";
-const useShareIndex = (store: any, refresh: any) => {
-  const getAllShares = () => {
-    store.dispatch("getAllShares");
-  };
-  const agree = (id: any) => {
-    if (confirm("您确定要为这条分享点赞吗")) {
-      store.dispatch("agree", id);
-      refresh();
-    }
-  };
-  const addComment = (id: any, comment: any) => {
-    if (confirm("您确定要发表评论吗")) {
-      store.dispatch("addComment", {
-        id,
-        comment,
-      });
-      refresh();
-    }
-  };
-  const report = (id: any, content: any) => {
-    if (confirm("您确定要举报吗")) {
-      store.dispatch("report", {
-        id,
-        content,
-      });
-      refresh();
-    }
-  };
-  const sendMessage = (id: any, message: any) => {
-    if (confirm("您确定要留言吗")) {
-      store.dispatch("sendMessage", {
-        id,
-        message,
-      });
-      refresh();
-    }
-  };
-  const collect = (id: any) => {
-    if (confirm("您确定要收藏吗")) {
-      store.dispatch("collect", {
-        id,
-      });
-      refresh();
-    }
-  };
-  const match = (search: string, category: string, sort: any) => {
-    store.commit("match", { search, category, sort });
-  };
-
-  return {
-    getAllShares,
-    agree,
-    addComment,
-    report,
-    collect,
-    sendMessage,
-    match,
-  };
-};
 export default defineComponent({
   setup() {
     const search = ref("");
     const category = ref("全部");
     const sort = ref(0);
     const store = useStore();
-    const comment = ref([]);
-    const reportContent = ref([]);
-    const message = ref([]);
+    const comment = ref([]) as any;
+    const reportContent = ref([]) as any;
+    const message = ref([]) as any;
     const isneedreport = ref([]) as any;
     const isneedinfo = ref([]) as any;
-    const refresh = inject("refresh");
     const publicShares = computed(() => store.state.publicShares);
     const needreport = (index: any) => {
       isneedreport.value[index] = 1;
     };
     const closereport = (index: any) => {
       isneedreport.value[index] = null;
+      reportContent.value[index] = "";
     };
     const needinfo = (index: any) => {
       isneedinfo.value[index] = 1;
     };
     const closeinfo = (index: any) => {
       isneedinfo.value[index] = null;
+      message.value[index] = "";
     };
-    const {
-      getAllShares,
-      addComment,
-      agree,
-      report,
-      collect,
-      sendMessage,
-      match,
-    } = useShareIndex(store, refresh);
+    const getAllShares = () => {
+      setTimeout(() => {
+        store.dispatch("getAllShares");
+        setTimeout(() => {
+          match(search.value, category.value, sort.value);
+        }, 30);
+      }, 60);
+    };
+    const agree = (id: any) => {
+      if (confirm("您确定要为这条分享点赞吗")) {
+        store.dispatch("agree", id);
+        getAllShares();
+      }
+    };
+    const addComment = (id: any, content: any, index: any) => {
+      if (confirm("您确定要发表评论吗")) {
+        store.dispatch("addComment", {
+          id,
+          content,
+        });
+        comment.value[index] = "";
+        getAllShares();
+      }
+    };
+    const report = (id: any, content: any, index: any) => {
+      if (confirm("您确定要举报吗")) {
+        store.dispatch("report", {
+          id,
+          content,
+        });
+        reportContent.value[index] = "";
+      }
+    };
+    const sendMessage = (id: any, text: any, index: any) => {
+      if (confirm("您确定要留言吗")) {
+        store.dispatch("sendMessage", {
+          id,
+          text,
+        });
+        message.value[index] = "";
+      }
+    };
+    const collect = (id: any) => {
+      if (confirm("您确定要收藏吗")) {
+        store.dispatch("collect", {
+          id,
+        });
+      }
+    };
+    const match = (search: string, category: string, sort: any) => {
+      store.commit("match", { search, category, sort });
+    };
     watch(search, () => match(search.value, category.value, sort.value));
     getAllShares();
     return {

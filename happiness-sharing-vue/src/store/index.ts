@@ -15,6 +15,7 @@ const state = {
   sendMessages: [],
   receiveMessages: [],
   unsettledReports: [],
+  images: [],
 };
 const actions = {
   login: async ({ commit }: any, { username, password }: any) => {
@@ -111,10 +112,10 @@ const actions = {
       if (error) throw error;
     }
   },
-  addComment: async ({ commit }: any, { comment, id }: any) => {
+  addComment: async ({ commit }: any, { content, id }: any) => {
     try {
       const { data } = await axios.post("/sharer/share/comment/add", {
-        content: comment,
+        content,
         share: {
           id,
         },
@@ -147,10 +148,10 @@ const actions = {
       if (error) throw error;
     }
   },
-  sendMessage: async ({ commit }: any, { id, message }: any) => {
+  sendMessage: async ({ commit }: any, { id, text }: any) => {
     try {
       const { data } = await axios.post("/sharer/message/send", {
-        text: message,
+        text,
         receiver: {
           id,
         },
@@ -242,6 +243,32 @@ const actions = {
       if (error) throw error;
     }
   },
+  addImage: async ({ commit }: any, url: any) => {
+    try {
+      await axios.post("/admin/slideshow/add", {
+        picture: url,
+      });
+      commit("openDialog", "添加成功");
+    } catch (error) {
+      if (error) throw error;
+    }
+  },
+  deleteImage: async ({ commit }: any, id: any) => {
+    try {
+      await axios.get("/admin/slideshow/delete/" + id);
+      commit("openDialog", "删除成功");
+    } catch (error) {
+      if (error) throw error;
+    }
+  },
+  getImages: async ({ commit }: any) => {
+    try {
+      const { data } = await axios.get("/common/getAllSlideshows");
+      commit("getImages", data);
+    } catch (error) {
+      if (error) throw error;
+    }
+  },
 };
 const mutations = {
   login: (state: any, data: any) => {
@@ -302,6 +329,9 @@ const mutations = {
     else if (sort == 2)
       state.publicShares = jsQuickSort(state.publicShares).reverse();
     else if (sort == 3) state.publicShares = jsQuickSort(state.publicShares);
+  },
+  getImages: (state: any, data: any) => {
+    state.images = data.slideshows.reverse();
   },
   closeDialog: (state: any) => {
     state.dialogMessage = "";

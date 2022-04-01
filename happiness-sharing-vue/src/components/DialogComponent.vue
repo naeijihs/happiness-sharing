@@ -1,9 +1,11 @@
 <template>
   <el-dialog v-model="dialogVisible" title="Tip" width="36%" center="true">
-    <span>{{ dialogMessage }}</span>
+    <div style="text-align: center; font-size: 17px">
+      <span>{{ dialogMessage }}</span>
+    </div>
     <template #footer>
       <span class="dialog-footer">
-        <el-button type="primary" @click="closeDialog">Confirm</el-button>
+        <el-button type="primary" @click="closeDialog">confirm</el-button>
       </span>
     </template>
   </el-dialog>

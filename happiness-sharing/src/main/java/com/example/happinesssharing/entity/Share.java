@@ -27,7 +27,6 @@ public class Share {
     private List<Collection> collections;
     private String title;
     private String text;
-    private byte[] pictureOrVideo;
     private String category;
     private int agreeCount;
     @Column(columnDefinition = "timestamp default current_timestamp",insertable = false,updatable = false)
