@@ -288,7 +288,7 @@ const mutations = {
     state.personalShares = personalShares.reverse();
   },
   getAllShares: (state: any, allShares: any) => {
-    state.allShares = allShares.reverse(); //reverse改变原属组
+    state.allShares = allShares.reverse(); //reverse改变原数组
     state.publicShares = allShares;
   },
   getPersonalComments: (state: any, data: any) => {

@@ -30,6 +30,9 @@ axios.interceptors.response.use(
             store.commit("openDialog", "无权限");
             store.commit("unlogin");
         }
+        else if (status == 500) {
+            store.commit("openDialog", "服务器出现错误")
+        }
 
         return Promise.reject(err);
     }

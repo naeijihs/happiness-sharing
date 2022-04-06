@@ -1,6 +1,10 @@
 <template>
   <div>
-    <el-table :data="unsettledReports" style="width: 100%; font-size: 17px">
+    <el-table
+      :data="unsettledReports"
+      style="width: 100%; font-size: 17px"
+      empty-text="无举报"
+    >
       <el-table-column
         fixed
         prop="share.title"
@@ -38,7 +42,7 @@
             type="text"
             size="small"
             @click="acceptReport(scope.row.id)"
-            >接受</el-button
+            >受理</el-button
           >
           <el-button
             type="text"

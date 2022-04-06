@@ -1,14 +1,37 @@
 <template>
   <div>
-    <input type="text" placeholder="title" v-model="shareTitle" />
-    <textarea
-      cols="30"
-      rows="10"
-      placeholder="text"
+    <div style="margin: 20px 0" />
+    <el-input
+      v-model="shareTitle"
+      autosize
+      type="textarea"
+      placeholder="标题（可为空）"
+      style="font-size: 17px"
+    />
+    <div style="margin: 20px 0" />
+    <el-input
       v-model="shareText"
-    ></textarea>
-    <button @click="addShare">add</button>
-    <button @click="closeAddShare">close</button>
+      :autosize="{ minRows: 17 }"
+      type="textarea"
+      placeholder="内容（不可为空）"
+      style="font-size: 17px"
+    />
+    <div style="padding: 20px 0">
+      <el-button
+        class="button"
+        type="text"
+        @click="addShare"
+        style="font-size: 18px; padding: 0 10vw"
+        >发布</el-button
+      >
+      <el-button
+        class="button"
+        type="text"
+        @click="closeAddShare"
+        style="font-size: 18px; padding: 0 10vw; color: gray"
+        >关闭</el-button
+      >
+    </div>
   </div>
 </template>
 
@@ -24,14 +47,14 @@ export default defineComponent({
     const shareText = ref("");
     //作用域问题 无法模块化  必须放在setup才能更新响应式数据
     const addShare = () => {
-      if (shareTitle.value.trim()) {
+      if (shareText.value.trim()) {
         store.dispatch("addShare", {
           title: shareTitle.value,
           text: shareText.value,
         });
         shareTitle.value = "";
         shareText.value = "";
-      } else store.commit("openDialog", "标题不可为空");
+      } else store.commit("openDialog", "分享内容不可为空");
     };
     const closeAddShare = () => {
       router.push("/sharer/personalCenter/share");

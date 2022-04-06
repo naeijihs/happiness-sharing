@@ -3,13 +3,12 @@
     <div v-if="!isclick" style="text-align: right">
       <a @click="click" style="margin-right: 5px">密码修改</a>
     </div>
-    <div v-else>
+    <div v-else style="width: 230px">
       <input
         type="password"
         v-model="newPassword"
         placeholder="请输入新密码"
         autofocus
-        style=""
       />
       <button @click="modifyPassword">修改</button>
       <button @click="modifyPasswordClose">关闭</button>
@@ -64,7 +63,6 @@ export default defineComponent({
 
 <style scoped>
 #modify {
-  width: 230px;
   height: 25px;
   position: fixed;
   right: 15px;

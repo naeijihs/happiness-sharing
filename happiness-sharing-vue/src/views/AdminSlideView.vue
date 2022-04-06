@@ -2,7 +2,7 @@
   <div>
     <div style="width: 600px; display: flex; margin: 40px auto 20px">
       <el-input v-model="url" placeholder="请输入图片地址" clearable />
-      <el-row class="mb-4">
+      <el-row class="mb-4" style="margin-left: 2px">
         <el-button type="primary" @click="addImage">添加</el-button>
       </el-row>
     </div>
@@ -59,7 +59,7 @@ export default defineComponent({
     const getImages = () => {
       setTimeout(() => {
         store.dispatch("getImages");
-      }, 30);
+      }, 100);
     };
     getImages();
     return {

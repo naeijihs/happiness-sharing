@@ -1,16 +1,25 @@
 <template>
   <div>
-    <div style="width: 80vw; margin: 0 auto">
-      <el-carousel :interval="4000" type="card" height="33vh" ref="carousel">
-        <el-carousel-item v-for="(image, index) in images" :key="index">
-          <img :src="image.picture" />
-        </el-carousel-item>
-      </el-carousel>
-    </div>
-
-    <router-link to="/">广场</router-link>
-    <router-link to="/sharer/personalCenter">个人中心</router-link>
-    <router-view name="sharer" />
+    <el-menu
+      :default-active="activeIndex"
+      class="el-menu-demo"
+      mode="horizontal"
+      style="justify-content: center"
+      @select="handleSelect"
+    >
+      <el-menu-item index="1">
+        <router-link to="/">快乐广场</router-link></el-menu-item
+      >
+      <el-menu-item index="2">
+        <router-link to="/sharer/personalCenter"
+          >个人中心</router-link
+        ></el-menu-item
+      >
+    </el-menu>
+    <router-view
+      name="sharer"
+      style="width: 66vw; margin: 0 auto; text-align: center"
+    />
     <modify-password-component />
     <unlogin-component />
   </div>
@@ -19,8 +28,8 @@
 <script lang="ts">
 import ModifyPasswordComponent from "@/components/ModifyPasswordComponent.vue";
 import UnloginComponent from "@/components/UnloginComponent.vue";
-import { computed, defineComponent, onMounted, ref } from "vue";
-import { useStore } from "vuex";
+import { defineComponent, ref } from "vue";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   components: {
@@ -28,29 +37,24 @@ export default defineComponent({
     UnloginComponent,
   },
   setup() {
-    const store = useStore();
-    const images = computed(() => store.state.images);
-    const carousel = ref(null) as any;
-    const getImages = () => {
-      store.dispatch("getImages");
+    const activeIndex = ref("1");
+    const router = useRouter();
+    router.push("/");
+    const handleSelect = (key: string) => {
+      activeIndex.value = key;
+      if (key == "1") router.push("/");
+      else if (key == "2") router.push("/sharer/personalCenter");
     };
-    onMounted(() => {
-      setTimeout(() => {
-        carousel.value.setActiveItem(0);
-      }, 4);
-    });
-    getImages();
     return {
-      images,
-      carousel,
+      activeIndex,
+      handleSelect,
     };
   },
 });
 </script>
-
 <style scoped>
-img {
-  height: 33vh;
-  width: 40vw;
+a {
+  text-decoration: none;
+  font-size: 20px;
 }
 </style>
