@@ -48,7 +48,7 @@ const usePersonalComment = (store: any) => {
   };
   const deleteComment = (id: any) => {
     if (confirm("您确定要删除这个评论吗")) {
-      store.dispatch("deleteComment", id);
+      store.dispatch("deletePersonalComment", id);
       setTimeout(() => {
         getPersonalComments();
       }, 100);

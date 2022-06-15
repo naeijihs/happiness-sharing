@@ -19,8 +19,6 @@ public class RegistController {
     private UserService userService;
     @Autowired
     private SharerService sharerService;
-    @Autowired
-    private PasswordEncoder encoder;
     @PostMapping("regist")
     public Map regist(@RequestBody User register){
         User user=userService.getUserByUsername(register.getUsername());

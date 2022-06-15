@@ -42,17 +42,19 @@
       </template>
       <div
         class="item"
-        style="
-          border-bottom: 0.5px solid silver;
-          color: gray;
-          font-weight: blod;
-        "
+        style="border-bottom: 0.5px solid silver; font-weight: blod"
       >
         <div style="padding-bottom: 18px" v-if="share.title != ''">
           {{ share.title }}
         </div>
-        <div>
+        <div
+          style="text-align: left; padding-bottom: 18px"
+          v-if="share.text != ''"
+        >
           {{ share.text }}
+        </div>
+        <div v-if="share.picture != null" style="padding-bottom: 18px">
+          <img :src="share.picture" style="width: 300px; height: 200px" />
         </div>
       </div>
       <div style="padding: 18px 0 0 0">
@@ -183,9 +185,6 @@ export default defineComponent({
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-.item {
-  padding-bottom: 18px;
 }
 .box-card {
   margin: 20px auto;

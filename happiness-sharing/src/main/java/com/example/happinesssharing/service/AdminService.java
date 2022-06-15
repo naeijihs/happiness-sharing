@@ -17,25 +17,13 @@ import java.util.List;
 @Service
 public class AdminService {
     @Autowired
-    private RecommendRepository recommendRepository;
-    @Autowired
     private SlideshowRepository slideshowRepository;
     @Autowired
     private ReportRepository reportRepository;
     @Autowired
     private ShareRepository shareRepository;
-    public Recommend addRecommend(Recommend recommend){
-        return recommendRepository.save(recommend);
-    }
-    public void deleteRecommend(int id){
-        recommendRepository.deleteById(id);
-    }
-    public Recommend getOneRecommend(int id){
-        return recommendRepository.findById(id).orElse(null);
-    }
-    public List<Recommend> getAllRecommends(){
-        return recommendRepository.findAll();
-    }
+    @Autowired
+    private RecommendRepository recommendRepository;
     public Slideshow addSlideshow(Slideshow slideshow){
         return slideshowRepository.save(slideshow);
     }
@@ -56,5 +44,17 @@ public class AdminService {
     public void refuseReport(int id){
         Report report=reportRepository.findById(id).orElse(null);
         report.setState(Report.State.REFUSE);
+    }
+    public void deleteRecommend(int id){
+        recommendRepository.deleteById(id);
+    }
+    public Recommend addRecommend(Recommend recommend){
+        return recommendRepository.save(recommend);
+    }
+    public Recommend getRecommend(int id){
+        return recommendRepository.findById(id).orElse(null);
+    }
+    public List<Recommend> getRecommends(){
+        return recommendRepository.findAll();
     }
 }

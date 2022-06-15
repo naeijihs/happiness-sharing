@@ -9,11 +9,11 @@
 <script lang="ts">
 import { computed, defineAsyncComponent, defineComponent } from "vue";
 import { useStore } from "vuex";
+const LoginView = defineAsyncComponent(() => import("../views/LoginView.vue"));
 const AdminView = defineAsyncComponent(() => import("../views/AdminView.vue"));
 const SharerView = defineAsyncComponent(
   () => import("../views/SharerView.vue")
 );
-const LoginView = defineAsyncComponent(() => import("../views/LoginView.vue"));
 export default defineComponent({
   components: {
     LoginView,

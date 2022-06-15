@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Data
-@JsonIgnoreProperties({"shares","agrees","comments","reports","collections","receives","sends"})
+@JsonIgnoreProperties({"shares","agrees","comments","reports","collections","receives","sends","communications"})
 public class Sharer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +30,8 @@ public class Sharer {
     private List<Message> receives;
     @OneToMany(mappedBy = "sender",cascade = {CascadeType.ALL})
     private List<Message> sends;
+    @OneToMany(mappedBy = "communicator",cascade = {CascadeType.ALL})
+    private List<Communication> communications;
     private String name;
     private String sex;
     private Integer age;

@@ -3,7 +3,7 @@
     <el-table
       :data="unsettledReports"
       style="width: 100%; font-size: 17px"
-      empty-text="无举报"
+      empty-text="暂无举报"
     >
       <el-table-column
         fixed

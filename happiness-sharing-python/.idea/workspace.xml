@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="14c43ebe-935d-44bd-a20b-f96d407ea424" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing-vue/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing-vue/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/src/components/ModifyPasswordComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing-vue/src/components/ModifyPasswordComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing-vue/src/router/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/src/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing-vue/src/store/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/src/util/fileUtil.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/AddShareView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/AddShareView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/AdminReportView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/AdminReportView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/AdminView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/AdminView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/IndexView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/IndexView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/LoginView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/LoginView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/PersonalCollectionView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/PersonalCollectionView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/PersonalCommentView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/PersonalCommentView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/PersonalMessageView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/PersonalMessageView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/PersonalShareView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/PersonalShareView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/SharerIndexView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/SharerIndexView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/vue.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing-vue/vue.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/WebMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/WebMvcConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/controller/RegistController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/controller/RegistController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/controller/SharerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/controller/SharerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/entity/Recommend.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/entity/Share.java" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/entity/Share.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/entity/Sharer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/entity/Sharer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/repository/RecommendRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/service/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/service/AdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/service/SharerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/service/SharerService.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" module-name="python" is-module-sdk="true">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myUseModuleSdk" value="true" />
+    <option name="myModuleName" value="python" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="26K6NxPwjADUHP9sNp25TYOtOcf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.main">
+    <configuration type="PythonConfigurationType" factoryName="Python">
+      <module name="python" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/knn.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="python" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.main" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="14c43ebe-935d-44bd-a20b-f96d407ea424" name="Changes" comment="" />
+      <created>1647159895256</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1647159895256</updated>
+      <workItem from="1647159902961" duration="321000" />
+      <workItem from="1647160236665" duration="3364000" />
+      <workItem from="1647224630455" duration="16854000" />
+      <workItem from="1647247633432" duration="13000" />
+      <workItem from="1647251681144" duration="5113000" />
+      <workItem from="1647258735328" duration="6225000" />
+      <workItem from="1647273524521" duration="7234000" />
+      <workItem from="1647413484653" duration="656000" />
+      <workItem from="1647524085958" duration="197000" />
+      <workItem from="1647580625271" duration="611000" />
+      <workItem from="1647590264498" duration="3810000" />
+      <workItem from="1647964267680" duration="2951000" />
+      <workItem from="1648306826194" duration="434000" />
+      <workItem from="1648342919684" duration="37000" />
+      <workItem from="1648350686653" duration="24000" />
+      <workItem from="1648866578812" duration="847000" />
+      <workItem from="1648881569038" duration="2746000" />
+      <workItem from="1648965663311" duration="199000" />
+      <workItem from="1648968776092" duration="733000" />
+      <workItem from="1648978559069" duration="633000" />
+      <workItem from="1649242033802" duration="3370000" />
+      <workItem from="1649256437226" duration="1301000" />
+      <workItem from="1649257793001" duration="433000" />
+      <workItem from="1649304176847" duration="1467000" />
+      <workItem from="1649897975600" duration="598000" />
+      <workItem from="1649919002420" duration="9000" />
+      <workItem from="1650163417040" duration="1525000" />
+      <workItem from="1650245651005" duration="687000" />
+      <workItem from="1650248072754" duration="614000" />
+      <workItem from="1650291657647" duration="676000" />
+      <workItem from="1651291848275" duration="651000" />
+      <workItem from="1652932418307" duration="1007000" />
+      <workItem from="1652942125623" duration="1248000" />
+      <workItem from="1653012949888" duration="628000" />
+      <workItem from="1653099582368" duration="1835000" />
+      <workItem from="1653121083206" duration="24000" />
+      <workItem from="1653464305813" duration="1000" />
+      <workItem from="1653464618962" duration="1203000" />
+      <workItem from="1653722898054" duration="619000" />
+      <workItem from="1653754919736" duration="1741000" />
+      <workItem from="1653779626786" duration="748000" />
+      <workItem from="1653785350791" duration="1965000" />
+      <workItem from="1653795030398" duration="176000" />
+      <workItem from="1654149082691" duration="1000" />
+      <workItem from="1654149184252" duration="151000" />
+      <workItem from="1654305893992" duration="46000" />
+      <workItem from="1654308396595" duration="37000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/python$.coverage" NAME=" Coverage Results" MODIFIED="1647256789050" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/python$Unnamed.coverage" NAME="main Coverage Results" MODIFIED="1647264319187" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/python$main.coverage" NAME="main Coverage Results" MODIFIED="1647279570513" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/knn$knn.coverage" NAME="text_process Coverage Results" MODIFIED="1647966457796" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/knn$main.coverage" NAME="main Coverage Results" MODIFIED="1653779628112" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>

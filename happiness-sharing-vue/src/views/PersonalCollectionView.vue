@@ -73,12 +73,18 @@
           </div>
         </div>
       </template>
-      <div class="item" style="border-bottom: 0.5px solid silver; color: gray">
+      <div class="item" style="border-bottom: 0.5px solid silver">
         <div style="padding-bottom: 18px" v-if="c.share.title != ''">
           {{ c.share.title }}
         </div>
-        <div>
+        <div
+          style="text-align: left; padding-bottom: 18px"
+          v-if="c.share.text != ''"
+        >
           {{ c.share.text }}
+        </div>
+        <div v-if="c.share.picture != null" style="padding-bottom: 18px">
+          <img :src="c.share.picture" style="width: 300px; height: 200px" />
         </div>
       </div>
 
@@ -230,9 +236,6 @@ export default defineComponent({
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-.item {
-  padding-bottom: 18px;
 }
 .box-card {
   margin: 20px auto;

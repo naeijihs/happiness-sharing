@@ -21,8 +21,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     private LoginInterceptor loginInterceptor;
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(loginInterceptor)
-                .addPathPatterns("/**")
-                .excludePathPatterns("/login","/regist");
+                .addPathPatterns("/sharer/**","/admin/**","/modifyPassword");
         registry.addInterceptor(adminInterceptor)
                 .addPathPatterns("/admin/**");
         registry.addInterceptor(sharerInterceptor)

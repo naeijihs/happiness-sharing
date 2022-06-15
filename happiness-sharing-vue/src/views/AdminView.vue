@@ -5,12 +5,30 @@
         :default-active="activeIndex"
         class="el-menu-demo"
         mode="horizontal"
+        style="justify-content: center"
       >
         <el-menu-item index="1">
           <router-link to="/admin/report">举报管理</router-link></el-menu-item
         >
         <el-menu-item index="2">
           <router-link to="/admin/slide">轮播图管理</router-link></el-menu-item
+        >
+        <el-menu-item index="3">
+          <router-link to="/admin/recommend"
+            >推送管理</router-link
+          ></el-menu-item
+        >
+        <el-menu-item index="4">
+          <router-link to="/admin/sharer">分享者管理</router-link></el-menu-item
+        >
+        <el-menu-item index="5">
+          <router-link to="/admin/share">分享管理</router-link></el-menu-item
+        >
+        <el-menu-item index="6">
+          <router-link to="/admin/comment">评论管理</router-link></el-menu-item
+        >
+        <el-menu-item index="7">
+          <router-link to="/admin/message">留言管理</router-link></el-menu-item
         >
       </el-menu>
     </div>

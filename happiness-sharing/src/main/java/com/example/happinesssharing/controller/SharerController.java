@@ -1,12 +1,20 @@
 package com.example.happinesssharing.controller;
 
+import com.example.happinesssharing.component.Event;
+import com.example.happinesssharing.component.RequestComponent;
 import com.example.happinesssharing.entity.*;
 import com.example.happinesssharing.service.ShareService;
 import com.example.happinesssharing.service.SharerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.event.EventListener;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
+import java.io.IOException;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 @RestController
 @RequestMapping("/sharer/")
@@ -15,6 +23,12 @@ public class SharerController {
     private SharerService sharerService;
     @Autowired
     private ShareService shareService;
+    @Autowired
+    private ApplicationContext applicationContext;
+    @Autowired
+    private RequestComponent requestComponent;
+    public Map<Integer,SseEmitter> sseEmitterMap = new ConcurrentHashMap<>();
+
     @GetMapping("info/getOwnInfo")
     public Map getOwnInfo(){
         return Map.of("sharer",sharerService.getOwnInfo());
@@ -86,5 +100,36 @@ public class SharerController {
     @GetMapping("message/delete/{messageId}")
     public void deleteMessage(@PathVariable int messageId){
         sharerService.deleteMessage(messageId);
+    }
+    @GetMapping(path = "communication/create",produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public SseEmitter create() throws IOException {
+        SseEmitter sseEmitter=new SseEmitter(0L);
+        sseEmitterMap.putIfAbsent(requestComponent.getUid(), sseEmitter);
+        sseEmitter.send(sharerService.getCommunications());
+        return sseEmitter;
+    }
+    @PostMapping("communication/communicate")
+    public void communicate(@RequestBody Communication communication){
+        sharerService.communicate(communication);
+        applicationContext.publishEvent(new Event());
+    }
+    @EventListener(classes = Event.class)
+    public void timeCommunications() throws IOException {
+        sseEmitterMap.forEach((id,sseEmitter)-> {
+            try {
+                sseEmitter.send(sharerService.getCommunications());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+    @GetMapping("communication/close")
+    public Map closeCommunication(){
+        SseEmitter sseEmitter=sseEmitterMap.get(requestComponent.getUid());
+        if(sseEmitter!=null){
+            sseEmitterMap.remove(requestComponent.getUid());
+            sseEmitter.complete();
+        }
+        return Map.of("data","您已退出聊天室");
     }
 }

@@ -29,6 +29,7 @@ public class Share {
     private String text;
     private String category;
     private int agreeCount;
+    private String picture;
     @Column(columnDefinition = "timestamp default current_timestamp",insertable = false,updatable = false)
     private LocalDateTime time;
 }

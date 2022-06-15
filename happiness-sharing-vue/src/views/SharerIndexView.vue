@@ -1,5 +1,24 @@
 <template>
   <div>
+    <div
+      style="
+        width: 15vw;
+        position: fixed;
+        left: 2vw;
+        top: 40vh;
+        border: 0.5px solid silver;
+        border-radius: 2px;
+      "
+    >
+      <div style="color: gray">推送</div>
+      <div v-for="(recommend, index) in recommends" :key="index">
+        <router-link
+          :to="`/sharer/recommend/one/${recommend.id}`"
+          style="text-decoration: none; color: #409eff"
+          >{{ recommend.title }}</router-link
+        >
+      </div>
+    </div>
     <div style="width: 60vw; margin: 0 auto">
       <el-carousel
         :interval="3000"
@@ -157,12 +176,18 @@
           </div>
         </div>
       </template>
-      <div class="item" style="border-bottom: 0.5px solid silver; color: gray">
+      <div class="item" style="border-bottom: 0.5px solid silver">
         <div style="padding-bottom: 18px" v-if="share.title != ''">
           {{ share.title }}
         </div>
-        <div>
+        <div
+          style="text-align: left; padding-bottom: 18px"
+          v-if="share.text != ''"
+        >
           {{ share.text }}
+        </div>
+        <div v-if="share.picture != null" style="padding-bottom: 18px">
+          <img :src="share.picture" style="width: 300px; height: 200px" />
         </div>
       </div>
 
@@ -214,6 +239,13 @@
         </div>
       </div>
     </el-card>
+    <el-button
+      class="button"
+      type="text"
+      @click="toCommunicate"
+      style="position: fixed; top: 40vh; right: 8vw; font-size: 17px"
+      >聊天室</el-button
+    >
   </div>
 </template>
 
@@ -221,6 +253,7 @@
 import { computed, defineComponent, onMounted, ref, watch } from "vue";
 import { useStore } from "vuex";
 import { Search } from "@element-plus/icons-vue";
+import router from "@/router";
 export default defineComponent({
   setup() {
     const search = ref("");
@@ -236,10 +269,10 @@ export default defineComponent({
     const publicShares = computed(() => store.state.publicShares);
     const images = computed(() => store.state.images);
     const carousel = ref(null) as any;
+    const recommends = computed(() => store.state.recommends);
     const getImages = () => {
       store.dispatch("getImages");
     };
-
     onMounted(() => {
       setTimeout(() => {
         carousel.value.setActiveItem(0);
@@ -271,8 +304,8 @@ export default defineComponent({
         store.dispatch("getAllShares");
         setTimeout(() => {
           match(search.value, category.value, sort.value);
-        }, 30);
-      }, 120);
+        }, 100);
+      }, 100);
     };
     const agree = (id: any) => {
       if (confirm("您确定要为这条分享点赞吗")) {
@@ -324,6 +357,13 @@ export default defineComponent({
     const match = (search: string, category: string, sort: any) => {
       store.commit("match", { search, category, sort });
     };
+    const getRecommends = () => {
+      store.dispatch("getRecommends");
+    };
+    const toCommunicate = () => {
+      router.push("/sharer/communicate");
+    };
+    getRecommends();
     watch(search, () => match(search.value, category.value, sort.value));
     getImages();
     getAllShares();
@@ -353,6 +393,8 @@ export default defineComponent({
       isneedcomment,
       needcomment,
       closecomment,
+      recommends,
+      toCommunicate,
     };
   },
 });
@@ -366,9 +408,6 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-.item {
-  padding-bottom: 18px;
 }
 .box-card {
   margin: 20px auto;

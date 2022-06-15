@@ -105,11 +105,11 @@ import { computed, defineComponent, ref } from "vue";
 import { useStore } from "vuex";
 const usePersonalMessage = (store: any) => {
   const getMessages = () => {
-    store.dispatch("getMessages");
+    store.dispatch("getPersonalMessages");
   };
   const deleteMessage = (id: any) => {
     if (confirm("您确定要删除这个留言吗")) {
-      store.dispatch("deleteMessage", id);
+      store.dispatch("deletePersonalMessage", id);
       setTimeout(() => {
         getMessages();
       }, 100);

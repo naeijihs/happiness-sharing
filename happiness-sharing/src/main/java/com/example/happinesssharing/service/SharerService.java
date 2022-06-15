@@ -21,13 +21,13 @@ public class SharerService {
     @Autowired
     private CommentRepository commentRepository;
     @Autowired
-    private ReportRepository reportRepository;
-    @Autowired
     private ShareRepository shareRepository;
     @Autowired
     private CollectionRepository collectionRepository;
     @Autowired
     private MessageRepository messageRepository;
+    @Autowired
+    private CommunicationRepository communicationRepository;
     @Autowired
     private PasswordEncoder encoder;
 
@@ -50,7 +50,10 @@ public class SharerService {
         sharer.setSex(newSharer.getSex());
         return sharerRepository.save(sharer);
     }
-    public List<Comment> getOwnSendComments(){
+    public List<Comment> getComments(){
+        return commentRepository.findAll();
+    }
+    public List<Comment> getOwnSendComments() {
         return sharerRepository.findById(requestComponent.getUid()).orElse(null).getComments();
     }
     public void deleteSendComment(int id){
@@ -80,6 +83,9 @@ public class SharerService {
     public List<Collection> getOwnCollections(){
         return sharerRepository.findById(requestComponent.getUid()).orElse(null).getCollections();
     }
+    public List<Message> getMessages(){
+        return messageRepository.findAll();
+    }
     public Message sendMessage(Message message){
         message.setReceiver(sharerRepository.findById(message.getReceiver().getId()).orElse(null));
         message.setSender(sharerRepository.findById(requestComponent.getUid()).orElse(null));
@@ -93,5 +99,18 @@ public class SharerService {
     }
     public void deleteMessage(int id){
         messageRepository.deleteById(id);
+    }
+    public List<Sharer> getSharers(){
+        return sharerRepository.findAll();
+    }
+    public void deleteSharer(int id){
+        sharerRepository.deleteById(id);
+    }
+    public void communicate(Communication communication){
+        communication.setCommunicator(sharerRepository.findById(requestComponent.getUid()).orElse(null));
+        communicationRepository.save(communication);
+    }
+    public List<Communication> getCommunications(){
+        return communicationRepository.findAll();
     }
 }

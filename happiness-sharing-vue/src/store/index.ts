@@ -16,6 +16,13 @@ const state = {
   receiveMessages: [],
   unsettledReports: [],
   images: [],
+  recommends: [],
+  recommend: {},
+  sharers: [],
+  comments: [],
+  messages: [],
+  communications: [],
+  src: "",
 };
 const actions = {
   login: async ({ commit }: any, { username, password }: any) => {
@@ -171,7 +178,7 @@ const actions = {
       if (error) throw error;
     }
   },
-  deleteComment: async ({ commit }: any, id: any) => {
+  deletePersonalComment: async ({ commit }: any, id: any) => {
     try {
       await axios.get("/sharer/share/comment/deleteSendComment/" + id);
       commit("openDialog", "评论删除成功");
@@ -203,15 +210,15 @@ const actions = {
       if (error) throw error;
     }
   },
-  getMessages: async ({ commit }: any) => {
+  getPersonalMessages: async ({ commit }: any) => {
     try {
       const { data } = await axios.get("/sharer/message/getMessages");
-      commit("getMessages", data);
+      commit("getPersonalMessages", data);
     } catch (error) {
       if (error) throw error;
     }
   },
-  deleteMessage: async ({ commit }: any, id: any) => {
+  deletePersonalMessage: async ({ commit }: any, id: any) => {
     try {
       await axios.get("/sharer/message/delete/" + id);
       commit("openDialog", "留言删除成功");
@@ -269,14 +276,128 @@ const actions = {
       if (error) throw error;
     }
   },
+  addRecommend: async ({ commit }: any, { title, content }: any) => {
+    try {
+      await axios.post("/common/recommend/add", { title, content });
+      commit("openDialog", "添加成功");
+    } catch (error) {
+      if (error) throw error;
+    }
+  },
+  getRecommends: async ({ commit }: any) => {
+    try {
+      const { data } = await axios.get("/common/recommend/getAll");
+      commit("getRecommends", data);
+    } catch (error) {
+      if (error) throw error;
+    }
+  },
+  getRecommend: async ({ commit }: any, id: any) => {
+    try {
+      const { data } = await axios.get("/common/recommend/getOne/" + id);
+      commit("getRecommend", data);
+    } catch (error) {
+      if (error) throw error;
+    }
+  },
+  deleteRecommend: async ({ commit }: any, id: any) => {
+    try {
+      await axios.get("/common/recommend/delete/" + id);
+      commit("openDialog", "删除成功");
+    } catch (error) {
+      if (error) throw error;
+    }
+  },
+  getSharers: async ({ commit }: any) => {
+    try {
+      const { data } = await axios.get("/admin/sharer/all");
+      commit("getSharers", data);
+    } catch (error) {
+      if (error) throw error;
+    }
+  },
+  deleteSharer: async ({ commit }: any, id: any) => {
+    try {
+      await axios.get("/admin/sharer/delete/" + id);
+      commit("openDialog", "删除成功");
+    } catch (error) {
+      if (error) throw error;
+    }
+  },
+  getShares: async ({ commit }: any) => {
+    try {
+      const { data } = await axios.get("/admin/share/all");
+      commit("getAllShares", data.allShares);
+    } catch (error) {
+      if (error) throw error;
+    }
+  },
+  deleteShare: async ({ commit }: any, id: any) => {
+    try {
+      await axios.get("/admin/share/delete/" + id);
+      commit("openDialog", "删除成功");
+    } catch (error) {
+      if (error) throw error;
+    }
+  },
+  getComments: async ({ commit }: any) => {
+    try {
+      const { data } = await axios.get("/admin/comment/all");
+      commit("getComments", data);
+    } catch (error) {
+      if (error) throw error;
+    }
+  },
+  deleteComment: async ({ commit }: any, id: any) => {
+    try {
+      await axios.get("/admin/comment/delete/" + id);
+      commit("openDialog", "删除成功");
+    } catch (error) {
+      if (error) throw error;
+    }
+  },
+  getMessages: async ({ commit }: any) => {
+    try {
+      const { data } = await axios.get("/admin/message/all");
+      commit("getMessages", data);
+    } catch (error) {
+      if (error) throw error;
+    }
+  },
+  deleteMessage: async ({ commit }: any, id: any) => {
+    try {
+      await axios.get("/admin/message/delete/" + id);
+      commit("openDialog", "删除成功");
+    } catch (error) {
+      if (error) throw error;
+    }
+  },
+  communicate: async ({ commit }: any, { content, time }: any) => {
+    try {
+      await axios.post("/sharer/communication/communicate", { content, time });
+    } catch (error) {
+      if (error) throw error;
+    }
+  },
+  closeCommunication: async ({ commit }: any) => {
+    try {
+      const { data } = await axios.get("/sharer/communication/close");
+      commit("openDialog", data.data);
+    } catch (error) {
+      if (error) throw error;
+    }
+  },
 };
 const mutations = {
   login: (state: any, data: any) => {
     state.role = data.role;
   },
   unlogin: (state: any) => {
-    sessionStorage.clear();
-    state.role = "";
+    setTimeout(() => {
+      sessionStorage.clear();
+      state.role = "";
+      location.reload();
+    }, 600);
   },
   getPersonalInfo: (state: any, { sharer }: any) => {
     state.personalInfo = sharer;
@@ -300,7 +421,7 @@ const mutations = {
   getPersonalReports: (state: any, data: any) => {
     state.personalReports = data.reports.reverse();
   },
-  getMessages: (state: any, data: any) => {
+  getPersonalMessages: (state: any, data: any) => {
     state.sendMessages = data.sendMessages.reverse();
     state.receiveMessages = data.receiveMessages.reverse();
   },
@@ -332,6 +453,30 @@ const mutations = {
   },
   getImages: (state: any, data: any) => {
     state.images = data.slideshows.reverse();
+  },
+  getRecommends: (state: any, data: any) => {
+    state.recommends = data.recommends;
+  },
+  getRecommend: (state: any, data: any) => {
+    state.recommend = data.recommend;
+  },
+  getSharers: (state: any, data: any) => {
+    state.sharers = data.sharers;
+  },
+  getComments: (state: any, data: any) => {
+    state.comments = data.comments;
+  },
+  getMessages: (state: any, data: any) => {
+    state.messages = data.messages;
+  },
+  timeCommunications: (state: any, communications: any) => {
+    state.communications = communications;
+  },
+  src: (state: any, src: any) => {
+    state.src = src;
+  },
+  clearsrc: (state: any) => {
+    state.src = "";
   },
   closeDialog: (state: any) => {
     state.dialogMessage = "";
