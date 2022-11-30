@@ -23,6 +23,8 @@ const state = {
   messages: [],
   communications: [],
   src: "",
+  formData: {},
+  videoInfo: "",
 };
 const actions = {
   login: async ({ commit }: any, { username, password }: any) => {
@@ -477,6 +479,18 @@ const mutations = {
   },
   clearsrc: (state: any) => {
     state.src = "";
+  },
+  clearvideo: (state: any) => {
+    state.formData = {};
+  },
+  clearvideoinfo: (state: any) => {
+    state.videoInfo = "";
+  },
+  videoInfo: (state: any, videoInfo: any) => {
+    state.videoInfo = videoInfo;
+  },
+  formData: (state: any, formData: FormData) => {
+    state.formData = formData;
   },
   closeDialog: (state: any) => {
     state.dialogMessage = "";

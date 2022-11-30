@@ -10,8 +10,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.event.EventListener;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -36,6 +38,10 @@ public class SharerController {
     @PostMapping("info/modifyInfo")
     public Map modifyInfo(@RequestBody Sharer newSharer){
         return Map.of("sharer",sharerService.modifySharer(newSharer),"info","个人信息修改成功");
+    }
+    @PostMapping("share/addvideo")
+    public Map addVideo(@RequestBody MultipartFile video, HttpServletRequest request) throws IOException {
+        return Map.of("videoPath",shareService.addVideo(video,request));
     }
     @PostMapping("share/add")
     public Map addShare(@RequestBody Share share){

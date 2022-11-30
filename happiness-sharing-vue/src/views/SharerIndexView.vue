@@ -186,8 +186,16 @@
         >
           {{ share.text }}
         </div>
-        <div v-if="share.picture != null" style="padding-bottom: 18px">
+        <div
+          v-if="share.picture != null && share.picture != ''"
+          style="padding-bottom: 18px"
+        >
           <img :src="share.picture" style="width: 300px; height: 200px" />
+        </div>
+        <div v-if="share.videoPath != '' && share.videoPath != null">
+          <video controls>
+            <source :src="share.videoPath" type="video/mp4" />
+          </video>
         </div>
       </div>
 

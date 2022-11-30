@@ -30,6 +30,7 @@ public class Share {
     private String category;
     private int agreeCount;
     private String picture;
+    private String videoPath;
     @Column(columnDefinition = "timestamp default current_timestamp",insertable = false,updatable = false)
     private LocalDateTime time;
 }

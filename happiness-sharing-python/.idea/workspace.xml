@@ -5,33 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14c43ebe-935d-44bd-a20b-f96d407ea424" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing-vue/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing-vue/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/src/components/ModifyPasswordComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing-vue/src/components/ModifyPasswordComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing-vue/src/router/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/src/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing-vue/src/store/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/src/util/fileUtil.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/AddShareView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/AddShareView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/AdminReportView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/AdminReportView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/AdminView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/AdminView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/IndexView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/IndexView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/LoginView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/LoginView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/AdminShareView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/AdminShareView.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/PersonalCollectionView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/PersonalCollectionView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/PersonalCommentView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/PersonalCommentView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/PersonalMessageView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/PersonalMessageView.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/PersonalShareView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/PersonalShareView.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/SharerIndexView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing-vue/src/views/SharerIndexView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../happiness-sharing-vue/vue.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing-vue/vue.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../happiness-sharing/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/WebMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/WebMvcConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/controller/RegistController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/controller/RegistController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/controller/SharerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/controller/SharerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/entity/Recommend.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/entity/Share.java" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/entity/Share.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/entity/Sharer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/entity/Sharer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/repository/RecommendRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/service/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/service/AdminService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/service/SharerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/service/SharerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/service/ShareService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../happiness-sharing/src/main/java/com/example/happinesssharing/service/ShareService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,6 +168,15 @@
       <workItem from="1654149184252" duration="151000" />
       <workItem from="1654305893992" duration="46000" />
       <workItem from="1654308396595" duration="37000" />
+      <workItem from="1662352688741" duration="11000" />
+      <workItem from="1663296908050" duration="606000" />
+      <workItem from="1663384796855" duration="980000" />
+      <workItem from="1663391870824" duration="2921000" />
+      <workItem from="1663468387460" duration="634000" />
+      <workItem from="1663848399408" duration="1061000" />
+      <workItem from="1663849513878" duration="1384000" />
+      <workItem from="1663909846432" duration="140000" />
+      <workItem from="1663921009632" duration="348000" />
     </task>
     <servers />
   </component>
@@ -193,6 +187,7 @@
     <SUITE FILE_PATH="coverage/python$.coverage" NAME=" Coverage Results" MODIFIED="1647256789050" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/python$Unnamed.coverage" NAME="main Coverage Results" MODIFIED="1647264319187" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/python$main.coverage" NAME="main Coverage Results" MODIFIED="1647279570513" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/happiness_sharing_python$main.coverage" NAME="main Coverage Results" MODIFIED="1663468416073" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/knn$knn.coverage" NAME="text_process Coverage Results" MODIFIED="1647966457796" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/knn$main.coverage" NAME="main Coverage Results" MODIFIED="1653779628112" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>

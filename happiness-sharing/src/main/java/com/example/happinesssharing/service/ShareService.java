@@ -6,7 +6,11 @@ import com.example.happinesssharing.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,6 +33,25 @@ public class ShareService {
         Sharer sharer=sharerRepository.findById(requestComponent.getUid()).orElse(null);
         share.setSharer(sharer);
         return  shareRepository.save(share);
+    }
+    public String addVideo(MultipartFile video, HttpServletRequest request) throws IOException {
+        //把视频存储在服务器部署的临时文件中(删除项目static文件),改config
+        /*
+        String rootPath=request.getSession().getServletContext().getRealPath("/static/");
+        String path=rootPath+video.getOriginalFilename();
+        File videoFile=new File(path);
+        File parentFile=videoFile.getParentFile();
+        if(!parentFile.exists()){
+            parentFile.mkdirs();
+        }
+        video.transferTo(videoFile);
+        return path;
+        */
+        //把视频存储在项目文件中，需要在项目中新建static目录，改config
+        String rootPath=request.getSession().getServletContext().getRealPath("/");
+        String path=rootPath+video.getOriginalFilename();
+        video.transferTo(new File(path));
+        return "http://localhost:8080/video/"+video.getOriginalFilename();
     }
     public void deleteShare(int id){
         shareRepository.deleteById(id);

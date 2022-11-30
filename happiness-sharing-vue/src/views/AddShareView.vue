@@ -53,6 +53,32 @@
         </div>
       </div>
     </div>
+    <div style="position: fixed; right: 2vw; top: 66vh; width: 120px">
+      <el-button
+        class="button"
+        type="text"
+        style="font-size: 16px; color: orange; cursor: default"
+        >视频选择</el-button
+      >
+      <input
+        type="file"
+        @change="selectVideo"
+        id="video"
+        style="opacity: 0; position: absolute; left: 0; top: 5px"
+      />
+      <div v-if="videoInfo">
+        <div>{{ videoInfo }}</div>
+        <div>
+          <el-button
+            class="button"
+            type="text"
+            style="font-size: 14px; color: red; cursor: pointer"
+            @click="deleteVideo"
+            >删除</el-button
+          >
+        </div>
+      </div>
+    </div>
     <div style="padding: 20px 0; display: flex; justify-content: space-around">
       <el-button
         class="button"
@@ -73,6 +99,7 @@
 </template>
 
 <script lang="ts">
+import axios from "@/axios";
 import { computed, defineComponent, ref } from "vue";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
@@ -82,24 +109,40 @@ export default defineComponent({
     const router = useRouter();
     const shareTitle = ref("");
     const shareText = ref("");
+    let videoPath = {} as any;
+    const videoInfo = computed(() => store.state.videoInfo);
     const picture = computed(() => store.state.src);
+    const formData = computed(() => store.state.formData);
     //作用域问题 无法模块化  必须放在setup才能更新响应式数据
-    const addShare = () => {
+    const addShare = async () => {
       if (
         shareText.value.trim() ||
         shareTitle.value.trim() ||
-        picture.value.trim()
+        picture.value.trim() ||
+        videoInfo.value
       ) {
+        if (videoInfo.value)
+          try {
+            videoPath = await axios.post(
+              "/sharer/share/addvideo",
+              formData.value,
+              {
+                headers: { "Content-Type": "multipart/form-data" },
+              }
+            );
+          } catch (error) {
+            if (error) throw error;
+          }
         store.dispatch("addShare", {
           title: shareTitle.value,
           text: shareText.value,
           picture: picture.value,
+          videoPath: videoPath.data ? videoPath.data.videoPath : "",
         });
         shareTitle.value = "";
         shareText.value = "";
-        store.commit("clearsrc");
-        const file = document.getElementById("file");
-        (file as HTMLInputElement).value = "";
+        deletePicture();
+        deleteVideo();
       } else store.commit("openDialog", "分享不可为空");
     };
     const closeAddShare = () => {
@@ -130,9 +173,22 @@ export default defineComponent({
         reader.readAsDataURL(file);
       }
     };
+    const selectVideo = async (event: any) => {
+      const file = event.target.files[0];
+      store.commit("videoInfo", file.name);
+      const formData = new FormData();
+      formData.append("video", file);
+      store.commit("formData", formData);
+    };
     const deletePicture = () => {
       store.commit("clearsrc");
       const file = document.getElementById("file");
+      (file as HTMLInputElement).value = "";
+    };
+    const deleteVideo = () => {
+      store.commit("clearvideo");
+      store.commit("clearvideoinfo");
+      const file = document.getElementById("video");
       (file as HTMLInputElement).value = "";
     };
     const todraw = () => {
@@ -147,6 +203,10 @@ export default defineComponent({
       upload,
       deletePicture,
       todraw,
+      selectVideo,
+      formData,
+      videoInfo,
+      deleteVideo,
     };
   },
 });
